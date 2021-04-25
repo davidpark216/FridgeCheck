@@ -1,7 +1,21 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import styled from "styled-components";
 
 function ColdStorage() {
-  return <div>여기는 냉장칸입니다.</div>;
+  return (
+    <ColdStorageWrap>
+      <ColdArea></ColdArea>
+    </ColdStorageWrap>
+  );
 }
 
 export default ColdStorage;
+
+const ColdStorageWrap = styled.div``;
+
+const ColdArea = styled.div`
+  width: 500px;
+  height: 100px;
+  border: 1px solid;
+  margin-bottom: 10px;
+`;
