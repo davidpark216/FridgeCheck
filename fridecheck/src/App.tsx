@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from "react";
-import styled from "styled-components";
+import React, { useState } from "react";
+import styled, { ThemeProvider } from "styled-components";
 import { ColdStorage, FrozenStorage, Nav, Login } from "./components";
+import theme from "./asset";
 
 function App() {
   const [loginPage, setLoginPage] = useState<boolean>(false);
@@ -10,12 +11,15 @@ function App() {
   };
   return (
     <Wrap>
-      <Nav handleLoginClick={handleLoginClick} />
-
-      <div className="head">냉장고에 뭐있지?</div>
-      <Login loginPage={loginPage} />
-      <ColdStorage />
-      <FrozenStorage />
+      <ThemeProvider theme={theme}>
+        <Nav handleLoginClick={handleLoginClick} />
+        <div className="head">냉장고에 뭐있지?</div>
+        <Fridge>
+          <Login loginPage={loginPage} setLoginPage={setLoginPage} />
+          <ColdStorage />
+          <FrozenStorage />
+        </Fridge>
+      </ThemeProvider>
     </Wrap>
   );
 }
@@ -23,3 +27,9 @@ function App() {
 export default App;
 
 const Wrap = styled.div``;
+
+const Fridge = styled.div`
+  border: 1px solid;
+  background: ${({ theme }) => theme.colors.blue};
+  width: 700px;
+`;
