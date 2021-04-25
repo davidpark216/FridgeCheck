@@ -1,13 +1,19 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import { ColdStorage, FrozenStorage, Nav } from "./components";
+import { ColdStorage, FrozenStorage, Nav, Login } from "./components";
 
 function App() {
+  const [loginPage, setLoginPage] = useState<boolean>(false);
+
+  const handleLoginClick = () => {
+    setLoginPage(true);
+  };
   return (
     <Wrap>
-      <Nav />
-      <div>유통기한</div>
-      <div className="head">냉장고 유통기한</div>
+      <Nav handleLoginClick={handleLoginClick} />
+
+      <div className="head">냉장고에 뭐있지?</div>
+      <Login loginPage={loginPage} />
       <ColdStorage />
       <FrozenStorage />
     </Wrap>
