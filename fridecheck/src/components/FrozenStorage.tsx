@@ -1,7 +1,19 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import styled from "styled-components";
 
 function FrozenStorage() {
-  return <div>여기는 냉동칸입니다.</div>;
+  return (
+    <FrozenStorageWrap>
+      <FrozenArea></FrozenArea>
+    </FrozenStorageWrap>
+  );
 }
-
 export default FrozenStorage;
+
+const FrozenStorageWrap = styled.div``;
+
+const FrozenArea = styled.div`
+  width: 500px;
+  height: 100px;
+  border: 1px solid;
+`;
