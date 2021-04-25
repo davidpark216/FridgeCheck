@@ -9,13 +9,19 @@ interface props {
 function Nav({ handleLoginClick }: props) {
   return (
     <NavWrap>
-      <button onClick={handleLoginClick}>로그인</button>
-      <button>회원가입</button>
-      <button>유통기한 팁</button>
+      <Button onClick={handleLoginClick}>로그인</Button>
+      <Button>회원가입</Button>
+      <Button>유통기한 팁</Button>
     </NavWrap>
   );
 }
 
 export default Nav;
 
-const NavWrap = styled.div``;
+const NavWrap = styled.div`
+  background-color: ${({ theme }) => theme.colors.green};
+`;
+
+const Button = styled.button`
+  ${({ theme }) => theme.common.defaultButton}
+`;
