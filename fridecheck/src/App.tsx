@@ -5,6 +5,10 @@ import theme from "./asset";
 
 function App() {
   const [loginPage, setLoginPage] = useState<boolean>(false);
+  //냉장칸 추가 버튼 누를 시에 div 보이게끔
+  const [addCold, setAddCold] = useState<boolean>(false);
+  //냉장칸 추가 버튼 누를 시에 div 보이게끔
+  const [addFrozen, setAddFrozen] = useState<boolean>(false);
 
   const handleLoginClick = () => {
     setLoginPage(true);
@@ -13,7 +17,7 @@ function App() {
     <Wrap>
       <ThemeProvider theme={theme}>
         <Nav handleLoginClick={handleLoginClick} />
-        <div className="head">냉장고에 뭐있지?</div>
+        <div id="head">냉장고에 뭐있지?</div>
         <Fridge>
           <Login loginPage={loginPage} setLoginPage={setLoginPage} />
           <ColdStorage />
@@ -26,7 +30,12 @@ function App() {
 
 export default App;
 
-const Wrap = styled.div``;
+const Wrap = styled.div`
+  #head {
+    font-size: 50px;
+    text-align: center;
+  }
+`;
 
 const Fridge = styled.div`
   border: 1px solid;
