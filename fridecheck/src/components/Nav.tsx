@@ -12,6 +12,8 @@ function Nav({ handleLoginClick }: props) {
       <Button onClick={handleLoginClick}>로그인</Button>
       <Button>회원가입</Button>
       <Button>유통기한 팁</Button>
+      <Button>냉장실 추가</Button>
+      <Button>냉동실 추가</Button>
     </NavWrap>
   );
 }
