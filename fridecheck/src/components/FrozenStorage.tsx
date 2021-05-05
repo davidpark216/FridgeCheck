@@ -1,10 +1,23 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 
-function FrozenStorage() {
+interface props {
+  frozenItems: any;
+}
+
+function FrozenStorage({ frozenItems }: props) {
   return (
     <FrozenStorageWrap>
-      <FrozenArea></FrozenArea>
+      <FrozenArea>
+        {frozenItems.map((el: any) => (
+          <div>
+            <div>
+              <span>{el.item}</span>
+              <span>{el.quantity}</span>
+            </div>
+          </div>
+        ))}
+      </FrozenArea>
     </FrozenStorageWrap>
   );
 }
