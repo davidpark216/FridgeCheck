@@ -9,37 +9,51 @@ interface props {
 }
 function AddArea({ addCold, addFrozen, setAddCold, setAddFrozen }: props) {
   return (
-    <div>
+    <AddAreaWrap>
       {addCold ? (
-        <div>
-          <div>이 곳은 냉장고추가 영역입니다</div>
-          <span
-            onClick={() => {
-              setAddCold(false);
-            }}
-          >
-            x
-          </span>
-        </div>
+        <InputArea>
+          <div className="upperArea">
+            <span>냉장칸 추가 물품</span>
+            <span
+              className="close"
+              onClick={() => {
+                setAddCold(false);
+              }}
+            >
+              x
+            </span>
+          </div>
+
+          <input type="text" />
+        </InputArea>
       ) : (
         <div />
       )}
       {addFrozen ? (
-        <div>
-          <div> 냉동고 추가영역입니다</div>
-          <span
-            onClick={() => {
-              setAddFrozen(false);
-            }}
-          >
-            x
-          </span>
-        </div>
+        <InputArea>
+          <div className="upperArea">
+            <span>냉동칸 추가 물품</span>
+            <span
+              className="close"
+              onClick={() => {
+                setAddFrozen(false);
+              }}
+            >
+              x
+            </span>
+          </div>
+
+          <input type="text" />
+        </InputArea>
       ) : (
         <div />
       )}
-    </div>
+    </AddAreaWrap>
   );
 }
 
 export default AddArea;
+
+const AddAreaWrap = styled.div``;
+
+const InputArea = styled.div``;
