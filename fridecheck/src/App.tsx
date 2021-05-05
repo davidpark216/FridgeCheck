@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled, { ThemeProvider } from "styled-components";
-import { ColdStorage, FrozenStorage, Nav, Login } from "./components";
+import { ColdStorage, FrozenStorage, Nav, Login, AddArea } from "./components";
 import theme from "./asset";
 
 function App() {
@@ -13,10 +13,28 @@ function App() {
   const handleLoginClick = () => {
     setLoginPage(true);
   };
+
+  const handleCold = () => {
+    setAddCold(true);
+  };
+
+  const handleFrozen = () => {
+    setAddFrozen(true);
+  };
   return (
     <Wrap>
       <ThemeProvider theme={theme}>
-        <Nav handleLoginClick={handleLoginClick} />
+        <Nav
+          handleLoginClick={handleLoginClick}
+          handleCold={handleCold}
+          handleFrozen={handleFrozen}
+        />
+        <AddArea
+          addCold={addCold}
+          addFrozen={addFrozen}
+          setAddCold={setAddCold}
+          setAddFrozen={setAddFrozen}
+        />
         <div id="head">냉장고에 뭐있지?</div>
         <Fridge>
           <Login loginPage={loginPage} setLoginPage={setLoginPage} />
