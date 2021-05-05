@@ -9,6 +9,14 @@ function App() {
   const [addCold, setAddCold] = useState<boolean>(false);
   //냉장칸 추가 버튼 누를 시에 div 보이게끔
   const [addFrozen, setAddFrozen] = useState<boolean>(false);
+  //냉장실 물품
+  const [coldItems, setColdItems] = useState([
+    { item: "계란", quantity: "30개" },
+  ]);
+  //냉동실 물품
+  const [frozenItems, setFrozenItems] = useState([
+    { item: "고등어", quantity: "1마리" },
+  ]);
 
   const handleLoginClick = () => {
     setLoginPage(true);
@@ -38,8 +46,8 @@ function App() {
         <div id="head">냉장고에 뭐있지?</div>
         <Fridge>
           <Login loginPage={loginPage} setLoginPage={setLoginPage} />
-          <ColdStorage />
-          <FrozenStorage />
+          <ColdStorage coldItems={coldItems} />
+          <FrozenStorage frozenItems={frozenItems} />
         </Fridge>
       </ThemeProvider>
     </Wrap>
