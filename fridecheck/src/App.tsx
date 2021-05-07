@@ -12,6 +12,7 @@ function App() {
   //냉장실 물품
   const [coldItems, setColdItems] = useState([
     { item: "계란", quantity: "30개" },
+    { item: "시금치", quantity: "1단" },
   ]);
   //냉동실 물품
   const [frozenItems, setFrozenItems] = useState([
@@ -22,11 +23,11 @@ function App() {
     setLoginPage(true);
   };
 
-  const handleCold = () => {
+  const handleOpenCold = () => {
     setAddCold(true);
   };
 
-  const handleFrozen = () => {
+  const handleOpenFrozen = () => {
     setAddFrozen(true);
   };
   return (
@@ -34,14 +35,18 @@ function App() {
       <ThemeProvider theme={theme}>
         <Nav
           handleLoginClick={handleLoginClick}
-          handleCold={handleCold}
-          handleFrozen={handleFrozen}
+          handleOpenCold={handleOpenCold}
+          handleOpenFrozen={handleOpenFrozen}
         />
         <AddArea
           addCold={addCold}
           addFrozen={addFrozen}
+          coldItems={coldItems}
+          frozenItmes={frozenItems}
           setAddCold={setAddCold}
           setAddFrozen={setAddFrozen}
+          setColdItems={setColdItems}
+          setFrozenItems={setFrozenItems}
         />
         <div id="head">냉장고에 뭐있지?</div>
         <Fridge>
