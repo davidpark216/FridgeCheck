@@ -11,9 +11,9 @@ function FrozenStorage({ frozenItems }: props) {
       <FrozenArea>
         {frozenItems.map((el: any) => (
           <div>
-            <div>
-              <span>{el.item}</span>
-              <span>{el.quantity}</span>
+            <div className="frozenItem">
+              <span className="frozenName">{el.item}</span>
+              <span className="frozenQuantity">{el.quantity}</span>
             </div>
           </div>
         ))}
@@ -23,7 +23,14 @@ function FrozenStorage({ frozenItems }: props) {
 }
 export default FrozenStorage;
 
-const FrozenStorageWrap = styled.div``;
+const FrozenStorageWrap = styled.div`
+  .frozenItem {
+    margin-bottom: 10px;
+  }
+  .frozenQuantity {
+    margin-left: 10px;
+  }
+`;
 
 const FrozenArea = styled.div`
   width: 500px;
