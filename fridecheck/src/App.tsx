@@ -38,6 +38,7 @@ function App() {
           handleOpenCold={handleOpenCold}
           handleOpenFrozen={handleOpenFrozen}
         />
+        <Login loginPage={loginPage} setLoginPage={setLoginPage} />
         <AddArea
           addCold={addCold}
           addFrozen={addFrozen}
@@ -48,9 +49,9 @@ function App() {
           setColdItems={setColdItems}
           setFrozenItems={setFrozenItems}
         />
+
         <div id="head">냉장고에 뭐있지?</div>
         <Fridge>
-          <Login loginPage={loginPage} setLoginPage={setLoginPage} />
           <ColdStorage coldItems={coldItems} />
           <FrozenStorage frozenItems={frozenItems} />
         </Fridge>

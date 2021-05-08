@@ -50,7 +50,11 @@ function AddArea({
   };
 
   const handleAddCold = () => {
-    setColdItems({});
+    setColdItems(coldItems.concat(addColdItem));
+  };
+
+  const handleAddFrozen = () => {
+    setFrozenItems(frozenItmes.concat(addFrozenItem));
   };
 
   return (
@@ -79,7 +83,7 @@ function AddArea({
               onChange={(e) => handleTypeCold("quantity", e)}
             />
           </div>
-          <button>추가</button>
+          <button onClick={handleAddCold}>추가</button>
         </InputArea>
       ) : (
         <div />
@@ -104,9 +108,12 @@ function AddArea({
           </div>
           <div className="coldQuantity">
             <span className="text">양 : </span>
-            <input type="text" onChange={(e) => handleTypeFrozen("item", e)} />
+            <input
+              type="text"
+              onChange={(e) => handleTypeFrozen("quantity", e)}
+            />
           </div>
-          <button>추가</button>
+          <button onClick={handleAddFrozen}>추가</button>
         </InputArea>
       ) : (
         <div />

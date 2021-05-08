@@ -9,9 +9,9 @@ function ColdStorage({ coldItems }: props) {
       <ColdArea>
         {coldItems.map((el: any) => (
           <div>
-            <div>
-              <span>{el.item}</span>
-              <span>{el.quantity}</span>
+            <div className="coldItem">
+              <span className="coldName">{el.item}</span>
+              <span className="coldQuantity">{el.quantity}</span>
             </div>
           </div>
         ))}
@@ -22,11 +22,19 @@ function ColdStorage({ coldItems }: props) {
 
 export default ColdStorage;
 
-const ColdStorageWrap = styled.div``;
+const ColdStorageWrap = styled.div`
+  .coldItem {
+    margin-bottom: 10px;
+  }
+  .coldQuantity {
+    margin-left: 10px;
+  }
+`;
 
 const ColdArea = styled.div`
   width: 500px;
   height: 100px;
   border: 1px solid;
   margin-bottom: 10px;
+  overflow: scroll;
 `;
