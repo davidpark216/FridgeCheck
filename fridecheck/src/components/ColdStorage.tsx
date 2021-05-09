@@ -12,6 +12,7 @@ function ColdStorage({ coldItems }: props) {
             <div className="coldItem">
               <span className="coldName">{el.item}</span>
               <span className="coldQuantity">{el.quantity}</span>
+              <span className="coldDate">{el.date}</span>
             </div>
           </div>
         ))}

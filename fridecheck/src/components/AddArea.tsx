@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 
 interface items {
@@ -26,11 +26,18 @@ function AddArea({
   setColdItems,
   setFrozenItems,
 }: props) {
-  const [addColdItem, setAddColdItem] = useState({ item: "", quantity: "" });
-
-  const [addFrozenItem, setAddFrozenItem] = useState({
+  const [addColdItem, setAddColdItem] = useState({
+    key: "",
     item: "",
     quantity: "",
+    date: "",
+  });
+
+  const [addFrozenItem, setAddFrozenItem] = useState({
+    key: "",
+    item: "",
+    quantity: "",
+    date: "",
   });
 
   const handleTypeCold = (
@@ -50,12 +57,35 @@ function AddArea({
   };
 
   const handleAddCold = () => {
-    setColdItems(coldItems.concat(addColdItem));
+    const today = new Date().toLocaleDateString();
+    setAddColdItem({
+      ...addColdItem,
+      date: String(today),
+      key: addColdItem.item,
+    });
+    // setTimeout(setColdItems(coldItems.concat(addColdItem)), 100);
   };
 
+  useEffect(() => {
+    if (addColdItem.key.length !== 0) {
+      setColdItems(coldItems.concat(addColdItem));
+    }
+  }, [addColdItem.key]);
+
   const handleAddFrozen = () => {
-    setFrozenItems(frozenItmes.concat(addFrozenItem));
+    const today = new Date().toLocaleDateString();
+    setAddFrozenItem({
+      ...addFrozenItem,
+      date: String(today),
+      key: addFrozenItem.item,
+    });
   };
+
+  useEffect(() => {
+    if (addFrozenItem.key.length !== 0) {
+      setFrozenItems(frozenItmes.concat(addFrozenItem));
+    }
+  }, [addFrozenItem.key]);
 
   return (
     <AddAreaWrap>
