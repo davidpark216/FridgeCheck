@@ -12,6 +12,7 @@ function ColdStorage({ coldItems }: props) {
             <div className="coldItem">
               <span className="coldName">{el.item}</span>
               <span className="coldQuantity">{el.quantity}</span>
+              <span className="coldUnit">{el.unit}</span>
               <span className="coldDate">{el.date}</span>
             </div>
           </div>
@@ -28,6 +29,9 @@ const ColdStorageWrap = styled.div`
     margin-bottom: 10px;
   }
   .coldQuantity {
+    margin-left: 10px;
+  }
+  .coldDate {
     margin-left: 10px;
   }
 `;
