@@ -13,7 +13,7 @@ function Login({ loginPage, setLoginPage }: props) {
   return loginPage ? (
     <LoginWrap>
       <div>여기는 로그인 구간입니다</div>
-      <div onClick={closeLogin}>x</div>
+      <button onClick={closeLogin}>x</button>
     </LoginWrap>
   ) : (
     <div></div>
