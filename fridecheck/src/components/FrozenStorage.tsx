@@ -14,6 +14,7 @@ function FrozenStorage({ frozenItems }: props) {
             <div className="frozenItem">
               <span className="frozenName">{el.item}</span>
               <span className="frozenQuantity">{el.quantity}</span>
+              <span className="frozenDate">{el.date}</span>
             </div>
           </div>
         ))}
