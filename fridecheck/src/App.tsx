@@ -11,12 +11,12 @@ function App() {
   const [addFrozen, setAddFrozen] = useState<boolean>(false);
   //냉장실 물품
   const [coldItems, setColdItems] = useState([
-    { item: "계란", quantity: "30개" },
-    { item: "시금치", quantity: "1단" },
+    { key: "계란", item: "계란", quantity: "30개", date: "2021. 05. 09" },
+    { key: "시금치", item: "시금치", quantity: "1단", date: "2021. 05. 09" },
   ]);
   //냉동실 물품
   const [frozenItems, setFrozenItems] = useState([
-    { item: "고등어", quantity: "1마리" },
+    { key: "고등어", item: "고등어", quantity: "1마리" },
   ]);
 
   const handleLoginClick = () => {
