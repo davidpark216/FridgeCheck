@@ -30,6 +30,7 @@ function AddArea({
     key: "",
     item: "",
     quantity: "",
+    unit: "",
     date: "",
   });
 
@@ -37,6 +38,7 @@ function AddArea({
     key: "",
     item: "",
     quantity: "",
+    unit: "",
     date: "",
   });
 
@@ -63,7 +65,6 @@ function AddArea({
       date: String(today),
       key: addColdItem.item,
     });
-    // setTimeout(setColdItems(coldItems.concat(addColdItem)), 100);
   };
 
   useEffect(() => {
@@ -112,7 +113,15 @@ function AddArea({
               type="text"
               onChange={(e) => handleTypeCold("quantity", e)}
             />
+            <select className="coldUnitSelect">
+              <option value="coldUnit"></option>
+              <option value="coldUnit">g</option>
+              <option value="coldUnit">개</option>
+              <option value="coldUnit">마리</option>
+              <option value="coldUnit">l</option>
+            </select>
           </div>
+
           <button onClick={handleAddCold}>추가</button>
         </InputArea>
       ) : (
@@ -142,6 +151,13 @@ function AddArea({
               type="text"
               onChange={(e) => handleTypeFrozen("quantity", e)}
             />
+            <select className="frozenUnitSelect">
+              <option value="frozenUnit"></option>
+              <option value="frozenUnit">g</option>
+              <option value="frozenUnit">개</option>
+              <option value="frozenUnit">마리</option>
+              <option value="frozenUnit">l</option>
+            </select>
           </div>
           <button onClick={handleAddFrozen}>추가</button>
         </InputArea>
