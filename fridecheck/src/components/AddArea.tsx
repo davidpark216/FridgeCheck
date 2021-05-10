@@ -88,6 +88,16 @@ function AddArea({
     }
   }, [addFrozenItem.key]);
 
+  const handleColdSelect = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const { value } = e.target;
+    setAddColdItem({ ...addColdItem, unit: value });
+  };
+
+  const handleFrozenSelect = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const { value } = e.target;
+    setAddFrozenItem({ ...addFrozenItem, unit: value });
+  };
+
   return (
     <AddAreaWrap>
       {addCold ? (
@@ -113,12 +123,15 @@ function AddArea({
               type="text"
               onChange={(e) => handleTypeCold("quantity", e)}
             />
-            <select className="coldUnitSelect">
-              <option value="coldUnit"></option>
-              <option value="coldUnit">g</option>
-              <option value="coldUnit">개</option>
-              <option value="coldUnit">마리</option>
-              <option value="coldUnit">l</option>
+            <select
+              className="coldUnitSelect"
+              onChange={(e) => handleColdSelect(e)}
+            >
+              <option value=""></option>
+              <option value="g">g</option>
+              <option value="개">개</option>
+              <option value="마리">마리</option>
+              <option value="l">l</option>
             </select>
           </div>
 
@@ -151,12 +164,15 @@ function AddArea({
               type="text"
               onChange={(e) => handleTypeFrozen("quantity", e)}
             />
-            <select className="frozenUnitSelect">
-              <option value="frozenUnit"></option>
-              <option value="frozenUnit">g</option>
-              <option value="frozenUnit">개</option>
-              <option value="frozenUnit">마리</option>
-              <option value="frozenUnit">l</option>
+            <select
+              className="frozenUnitSelect"
+              onChange={(e) => handleFrozenSelect(e)}
+            >
+              <option value=""></option>
+              <option value="g">g</option>
+              <option value="개">개</option>
+              <option value="마리">마리</option>
+              <option value="l">l</option>
             </select>
           </div>
           <button onClick={handleAddFrozen}>추가</button>
