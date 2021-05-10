@@ -7,12 +7,19 @@ function ColdStorage({ coldItems }: props) {
   return (
     <ColdStorageWrap>
       <ColdArea>
+        <div className="coldHead">
+          <div className="coldHeadName">이름</div>
+          <div className="coldHeadQuantity">양</div>
+          <div className="coldHeadDate">날짜</div>
+        </div>
         {coldItems.map((el: any) => (
           <div>
             <div className="coldItem">
               <span className="coldName">{el.item}</span>
-              <span className="coldQuantity">{el.quantity}</span>
-              <span className="coldUnit">{el.unit}</span>
+              <span className="coldQU">
+                <span className="coldQuantity">{el.quantity}</span>
+                <span className="coldUnit">{el.unit}</span>
+              </span>
               <span className="coldDate">{el.date}</span>
             </div>
           </div>
