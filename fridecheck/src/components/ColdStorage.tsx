@@ -7,20 +7,20 @@ function ColdStorage({ coldItems }: props) {
   return (
     <ColdStorageWrap>
       <ColdArea>
-        <div className="coldHead">
-          <div className="coldHeadName">이름</div>
-          <div className="coldHeadQuantity">양</div>
-          <div className="coldHeadDate">날짜</div>
+        <div id="coldHead">
+          <div id="coldHeadName">이름</div>
+          <div id="coldHeadQuantity">양</div>
+          <div id="coldHeadDate">날짜</div>
         </div>
         {coldItems.map((el: any) => (
           <div>
-            <div className="coldItem">
-              <span className="coldName">{el.item}</span>
-              <span className="coldQU">
+            <div id="coldItem">
+              <div className="coldName">{el.item}</div>
+              <div className="coldQU">
                 <span className="coldQuantity">{el.quantity}</span>
                 <span className="coldUnit">{el.unit}</span>
-              </span>
-              <span className="coldDate">{el.date}</span>
+              </div>
+              <div className="coldDate">{el.date}</div>
             </div>
           </div>
         ))}
@@ -32,14 +32,15 @@ function ColdStorage({ coldItems }: props) {
 export default ColdStorage;
 
 const ColdStorageWrap = styled.div`
-  .coldItem {
+  #coldHead {
+    display: grid;
+    grid-template-columns: 100px 100px 200px;
+    border-bottom: 1px solid;
+  }
+  #coldItem {
     margin-bottom: 10px;
-  }
-  .coldQuantity {
-    margin-left: 10px;
-  }
-  .coldDate {
-    margin-left: 10px;
+    display: grid;
+    grid-template-columns: 100px 100px 200px;
   }
 `;
 
