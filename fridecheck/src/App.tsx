@@ -16,14 +16,14 @@ function App() {
       item: "계란",
       quantity: "30",
       unit: "개",
-      date: "2021. 05. 09",
+      date: "2021. 5. 9.",
     },
     {
       key: "시금치",
       item: "시금치",
       quantity: "1",
       unit: "단",
-      date: "2021. 05. 09",
+      date: "2021. 5. 9.",
     },
   ]);
   //냉동실 물품
@@ -33,7 +33,7 @@ function App() {
       item: "고등어",
       quantity: "1",
       unit: "마리",
-      date: "2021. 05. 09",
+      date: "2021. 5. 9.",
     },
   ]);
 
