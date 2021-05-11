@@ -12,8 +12,24 @@ function Login({ loginPage, setLoginPage }: props) {
 
   return loginPage ? (
     <LoginWrap>
-      <div>여기는 로그인 구간입니다</div>
-      <button onClick={closeLogin}>x</button>
+      <CloseLogin>
+        <button onClick={closeLogin}>x</button>
+      </CloseLogin>
+
+      <h3 id="loginHead">로그인</h3>
+      <div id="inputBox">
+        <div id="inputId">
+          <span>아이디 : </span>
+          <input type="text" />
+        </div>
+        <div id="inputPassword">
+          <span>비밀번호 : </span>
+          <input type="password" />
+        </div>
+        <div id="loginButton">
+          <button>로그인</button>
+        </div>
+      </div>
     </LoginWrap>
   ) : (
     <div></div>
@@ -22,6 +38,10 @@ function Login({ loginPage, setLoginPage }: props) {
 
 export default Login;
 
-const LoginWrap = styled.div``;
+const LoginWrap = styled.div`
+  width: 30vw;
+`;
 
-const CloseLogin = styled.div``;
+const CloseLogin = styled.div`
+  float: right;
+`;

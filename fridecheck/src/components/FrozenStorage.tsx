@@ -9,20 +9,20 @@ function FrozenStorage({ frozenItems }: props) {
   return (
     <FrozenStorageWrap>
       <FrozenArea>
-        <div className="frozenHead">
-          <div className="frozenHeadName">이름</div>
-          <div className="frozenHeadQuantity">양</div>
-          <div className="frozenHeadDate">날짜</div>
+        <div id="frozenHead">
+          <div id="frozenHeadName">이름</div>
+          <div id="frozenHeadQuantity">양</div>
+          <div id="frozenHeadDate">날짜</div>
         </div>
         {frozenItems.map((el: any) => (
           <div>
-            <div className="frozenItem">
-              <span className="frozenName">{el.item}</span>
-              <span className="frozenQU">
+            <div id="frozenItem">
+              <div className="frozenName">{el.item}</div>
+              <div className="frozenQU">
                 <span className="frozenQuantity">{el.quantity}</span>
                 <span className="frozenUnit">{el.unit}</span>
-              </span>
-              <span className="frozenDate">{el.date}</span>
+              </div>
+              <div className="frozenDate">{el.date}</div>
             </div>
           </div>
         ))}
@@ -33,14 +33,15 @@ function FrozenStorage({ frozenItems }: props) {
 export default FrozenStorage;
 
 const FrozenStorageWrap = styled.div`
-  .frozenItem {
+  #frozenHead {
+    display: grid;
+    grid-template-columns: 100px 100px 200px;
+    border-bottom: 1px solid;
+  }
+  #frozenItem {
     margin-bottom: 10px;
-  }
-  .frozenQuantity {
-    margin-left: 10px;
-  }
-  .frozenDate {
-    margin-left: 10px;
+    display: grid;
+    grid-template-columns: 100px 100px 200px;
   }
 `;
 
