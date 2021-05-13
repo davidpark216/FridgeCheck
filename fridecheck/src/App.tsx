@@ -51,6 +51,7 @@ function App() {
   return (
     <Wrap>
       <ThemeProvider theme={theme}>
+        <div id="head">냉장고에 뭐있지?</div>
         <Nav
           handleLoginClick={handleLoginClick}
           handleOpenCold={handleOpenCold}
@@ -68,7 +69,6 @@ function App() {
           setFrozenItems={setFrozenItems}
         />
 
-        <div id="head">냉장고에 뭐있지?</div>
         <Fridge>
           <ColdStorage coldItems={coldItems} />
           <FrozenStorage frozenItems={frozenItems} />
@@ -83,7 +83,7 @@ export default App;
 const Wrap = styled.div`
   #head {
     font-size: 50px;
-    text-align: center;
+    margin-left: 50px;
   }
 `;
 

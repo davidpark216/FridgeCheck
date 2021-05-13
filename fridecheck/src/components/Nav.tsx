@@ -23,8 +23,11 @@ export default Nav;
 
 const NavWrap = styled.div`
   background-color: ${({ theme }) => theme.colors.green};
+  margin-bottom: 20px;
 `;
 
 const Button = styled.button`
   ${({ theme }) => theme.common.defaultButton}
+  margin-left : 10px;
+  margin-right: 10px;
 `;
