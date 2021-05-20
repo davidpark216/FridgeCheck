@@ -20,12 +20,10 @@ function Login({ loginPage, setLoginPage }: props) {
         <h3 id="loginHead">로그인</h3>
         <div id="inputBox">
           <div id="inputId">
-            <span>아이디 : </span>
-            <input type="text" />
+            <input type="text" placeholder="아이디" />
           </div>
           <div id="inputPassword">
-            <span>비밀번호 : </span>
-            <input type="password" />
+            <input type="password" placeholder="비밀번호" />
           </div>
           <div id="loginButton">
             <button>로그인</button>

@@ -1,6 +1,13 @@
 import React, { useState } from "react";
 import styled, { ThemeProvider } from "styled-components";
-import { ColdStorage, FrozenStorage, Nav, Login, AddArea } from "./components";
+import {
+  ColdStorage,
+  FrozenStorage,
+  Nav,
+  Login,
+  AddArea,
+  Modal,
+} from "./components";
 import theme from "./asset";
 
 function App() {
@@ -36,6 +43,12 @@ function App() {
       date: "2021. 5. 9.",
     },
   ]);
+
+  const [modalContents, setModalContents] = useState<string>("");
+
+  const [isLogin, setIsLogin] = useState<boolean>(false);
+
+  const [isModal, setIsModal] = useState<boolean>(true);
 
   const handleLoginClick = () => {
     setLoginPage(true);
@@ -73,6 +86,12 @@ function App() {
           <ColdStorage coldItems={coldItems} />
           <FrozenStorage frozenItems={frozenItems} />
         </Fridge>
+        <Modal
+          isModal={isModal}
+          setIsModal={setIsModal}
+          modalContents={modalContents}
+          setModalContents={setModalContents}
+        />
       </ThemeProvider>
     </Wrap>
   );
