@@ -23,6 +23,9 @@ function FrozenStorage({ frozenItems }: props) {
                 <span className="frozenUnit">{el.unit}</span>
               </div>
               <div className="frozenDate">{el.date}</div>
+              <div className="deleteArea">
+                <button className="deleteButton">삭제</button>
+              </div>
             </div>
           </div>
         ))}
@@ -41,7 +44,10 @@ const FrozenStorageWrap = styled.div`
   #frozenItem {
     margin-bottom: 10px;
     display: grid;
-    grid-template-columns: 100px 100px 200px;
+    grid-template-columns: 100px 100px 200px auto;
+  }
+  .deleteButton {
+    ${({ theme }) => theme.common.defaultButton}
   }
 `;
 
@@ -50,4 +56,5 @@ const FrozenArea = styled.div`
   height: 100px;
   border: 1px solid;
   overflow: scroll;
+  background: white;
 `;

@@ -21,6 +21,9 @@ function ColdStorage({ coldItems }: props) {
                 <span className="coldUnit">{el.unit}</span>
               </div>
               <div className="coldDate">{el.date}</div>
+              <div className="deleteArea">
+                <button className="deleteButton">삭제</button>
+              </div>
             </div>
           </div>
         ))}
@@ -40,7 +43,11 @@ const ColdStorageWrap = styled.div`
   #coldItem {
     margin-bottom: 10px;
     display: grid;
-    grid-template-columns: 100px 100px 200px;
+    grid-template-columns: 100px 100px 200px auto;
+  }
+
+  .deleteButton {
+    ${({ theme }) => theme.common.defaultButton}
   }
 `;
 
@@ -50,4 +57,5 @@ const ColdArea = styled.div`
   border: 1px solid;
   margin-bottom: 10px;
   overflow: scroll;
+  background: white;
 `;
