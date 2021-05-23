@@ -14,7 +14,7 @@ function Login({ loginPage, setLoginPage }: props) {
     <LoginModal>
       <LoginWrap>
         <CloseLogin>
-          <button onClick={closeLogin}>x</button>
+          <Button onClick={closeLogin}>x</Button>
         </CloseLogin>
 
         <h3 id="loginHead">로그인</h3>
@@ -26,7 +26,7 @@ function Login({ loginPage, setLoginPage }: props) {
             <input type="password" placeholder="비밀번호" />
           </div>
           <div id="loginButton">
-            <button>로그인</button>
+            <Button>로그인</Button>
           </div>
         </div>
       </LoginWrap>
@@ -57,4 +57,8 @@ const LoginWrap = styled.div`
 
 const CloseLogin = styled.div`
   float: right;
+`;
+
+const Button = styled.button`
+  ${({ theme }) => theme.common.defaultButton}
 `;
