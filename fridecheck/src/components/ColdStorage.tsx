@@ -2,8 +2,9 @@ import React from "react";
 import styled from "styled-components";
 interface props {
   coldItems: any;
+  handleColdDelete: (id: string) => void;
 }
-function ColdStorage({ coldItems }: props) {
+function ColdStorage({ coldItems, handleColdDelete }: props) {
   return (
     <ColdStorageWrap>
       <ColdArea>
@@ -13,7 +14,7 @@ function ColdStorage({ coldItems }: props) {
           <div id="coldHeadDate">날짜</div>
         </div>
         {coldItems.map((el: any) => (
-          <div>
+          <div key={el.id}>
             <div id="coldItem">
               <div className="coldName">{el.item}</div>
               <div className="coldQU">
@@ -22,7 +23,14 @@ function ColdStorage({ coldItems }: props) {
               </div>
               <div className="coldDate">{el.date}</div>
               <div className="deleteArea">
-                <button className="deleteButton">삭제</button>
+                <button
+                  className="deleteButton"
+                  onClick={() => {
+                    handleColdDelete(el.id);
+                  }}
+                >
+                  삭제
+                </button>
               </div>
             </div>
           </div>

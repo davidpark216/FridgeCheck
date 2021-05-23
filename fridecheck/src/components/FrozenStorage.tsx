@@ -3,9 +3,10 @@ import styled from "styled-components";
 
 interface props {
   frozenItems: any;
+  handleFrozenDelete: (id: string) => void;
 }
 
-function FrozenStorage({ frozenItems }: props) {
+function FrozenStorage({ frozenItems, handleFrozenDelete }: props) {
   return (
     <FrozenStorageWrap>
       <FrozenArea>
@@ -15,7 +16,7 @@ function FrozenStorage({ frozenItems }: props) {
           <div id="frozenHeadDate">날짜</div>
         </div>
         {frozenItems.map((el: any) => (
-          <div>
+          <div key={el.id}>
             <div id="frozenItem">
               <div className="frozenName">{el.item}</div>
               <div className="frozenQU">
@@ -24,7 +25,14 @@ function FrozenStorage({ frozenItems }: props) {
               </div>
               <div className="frozenDate">{el.date}</div>
               <div className="deleteArea">
-                <button className="deleteButton">삭제</button>
+                <button
+                  className="deleteButton"
+                  onClick={() => {
+                    handleFrozenDelete(el.id);
+                  }}
+                >
+                  삭제
+                </button>
               </div>
             </div>
           </div>
