@@ -60,8 +60,10 @@ const FrozenStorageWrap = styled.div`
 `;
 
 const FrozenArea = styled.div`
+  margin-bottom: 20px;
   width: 500px;
-  height: 100px;
+  min-height: 100px;
+  height: auto;
   border: 1px solid;
   overflow: scroll;
   background: white;

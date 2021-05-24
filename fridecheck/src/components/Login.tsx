@@ -3,9 +3,10 @@ import styled from "styled-components";
 
 interface props {
   loginPage: boolean;
-  setLoginPage?: any;
+  setLoginPage: any;
+  handleLogin: () => void;
 }
-function Login({ loginPage, setLoginPage }: props) {
+function Login({ loginPage, setLoginPage, handleLogin }: props) {
   const closeLogin = () => {
     setLoginPage(false);
   };
@@ -26,7 +27,7 @@ function Login({ loginPage, setLoginPage }: props) {
             <input type="password" placeholder="비밀번호" />
           </div>
           <div id="loginButton">
-            <Button>로그인</Button>
+            <Button onClick={() => handleLogin()}>로그인</Button>
           </div>
         </div>
       </LoginWrap>
