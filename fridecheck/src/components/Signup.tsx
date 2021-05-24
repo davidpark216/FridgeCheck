@@ -9,6 +9,10 @@ function Signup({ signupPage, setSignupPage }: props) {
   const handleClose = () => {
     setSignupPage(false);
   };
+
+  const handleConfirm = () => {
+    setSignupPage(false);
+  };
   return signupPage ? (
     <SignupModal>
       <SignupWrap>
@@ -34,7 +38,7 @@ function Signup({ signupPage, setSignupPage }: props) {
           </div>
         </InputBox>
         <ConfirmArea>
-          <Button>회원가입</Button>
+          <Button onClick={() => handleConfirm()}>회원가입</Button>
         </ConfirmArea>
       </SignupWrap>
     </SignupModal>
