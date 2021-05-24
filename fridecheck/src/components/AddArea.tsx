@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
+import { isQuantityCheck } from "../asset/Validation";
 
 interface items {
   item: string;
@@ -27,7 +28,7 @@ function AddArea({
   setFrozenItems,
 }: props) {
   const [addColdItem, setAddColdItem] = useState({
-    key: "",
+    id: "",
     item: "",
     quantity: "",
     unit: "",
@@ -35,12 +36,13 @@ function AddArea({
   });
 
   const [addFrozenItem, setAddFrozenItem] = useState({
-    key: "",
+    id: "",
     item: "",
     quantity: "",
     unit: "",
     date: "",
   });
+  const [error, setError] = useState<boolean>(false);
 
   const handleTypeCold = (
     key: string,
@@ -58,35 +60,45 @@ function AddArea({
     setAddFrozenItem({ ...addFrozenItem, [key]: value });
   };
 
-  const handleAddCold = () => {
+  const handleAddCold = (value: string) => {
     const today = new Date().toLocaleDateString();
-    setAddColdItem({
-      ...addColdItem,
-      date: String(today),
-      key: addColdItem.item,
-    });
+    if (isQuantityCheck(value)) {
+      setError(false);
+      setAddColdItem({
+        ...addColdItem,
+        date: String(today),
+        id: addColdItem.item,
+      });
+    } else {
+      setError(true);
+    }
   };
 
   useEffect(() => {
-    if (addColdItem.key.length !== 0) {
+    if (addColdItem.id.length !== 0) {
       setColdItems(coldItems.concat(addColdItem));
     }
-  }, [addColdItem.key]);
+  }, [addColdItem.id]);
 
-  const handleAddFrozen = () => {
+  const handleAddFrozen = (value: string) => {
     const today = new Date().toLocaleDateString();
-    setAddFrozenItem({
-      ...addFrozenItem,
-      date: String(today),
-      key: addFrozenItem.item,
-    });
+    if (isQuantityCheck(value)) {
+      setError(false);
+      setAddFrozenItem({
+        ...addFrozenItem,
+        date: String(today),
+        id: addFrozenItem.item,
+      });
+    } else {
+      setError(false);
+    }
   };
 
   useEffect(() => {
-    if (addFrozenItem.key.length !== 0) {
+    if (addFrozenItem.id.length !== 0) {
       setFrozenItems(frozenItmes.concat(addFrozenItem));
     }
-  }, [addFrozenItem.key]);
+  }, [addFrozenItem.id]);
 
   const handleColdSelect = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const { value } = e.target;
@@ -102,27 +114,34 @@ function AddArea({
     <AddAreaWrap>
       {addCold ? (
         <AddAreaModal>
-          <ColdInputArea>
-            <div className="upperArea">
-              <span>냉장칸 추가 물품</span>
-              <button
-                className="close"
-                onClick={() => {
-                  setAddCold(false);
-                }}
-              >
-                x
-              </button>
-            </div>
+          <InputArea>
+            <UpperArea>
+              <CloseArea>
+                <Button
+                  className="close"
+                  onClick={() => {
+                    setAddCold(false);
+                  }}
+                >
+                  x
+                </Button>
+              </CloseArea>
+
+              <AddHead>냉장칸 추가 물품</AddHead>
+            </UpperArea>
             <div id="coldItemInput">
-              <span className="text">물품 : </span>
-              <input type="text" onChange={(e) => handleTypeCold("item", e)} />
-            </div>
-            <div className="coldQuantity">
-              <span className="text">양 : </span>
               <input
                 type="text"
+                onChange={(e) => handleTypeCold("item", e)}
+                placeholder="물품"
+              />
+            </div>
+            <div className="coldQuantity">
+              <Input
+                type="text"
                 onChange={(e) => handleTypeCold("quantity", e)}
+                error={error}
+                placeholder="양"
               />
               <select
                 className="coldUnitSelect"
@@ -135,40 +154,50 @@ function AddArea({
                 <option value="l">l</option>
               </select>
             </div>
-
-            <button onClick={handleAddCold}>추가</button>
-          </ColdInputArea>
+            <AddButtonArea>
+              <Button
+                onClick={() => {
+                  handleAddCold(addColdItem.quantity);
+                }}
+              >
+                추가
+              </Button>
+            </AddButtonArea>
+          </InputArea>
         </AddAreaModal>
       ) : (
         <div />
       )}
       {addFrozen ? (
         <AddAreaModal>
-          <FrozenInputArea>
-            <div className="upperArea">
-              <span>냉동칸 추가 물품</span>
-              <button
-                className="close"
-                onClick={() => {
-                  setAddFrozen(false);
-                }}
-              >
-                x
-              </button>
-            </div>
+          <InputArea>
+            <UpperArea>
+              <AddHead>냉동칸 추가 물품</AddHead>
+              <CloseArea>
+                <Button
+                  className="close"
+                  onClick={() => {
+                    setAddFrozen(false);
+                  }}
+                >
+                  x
+                </Button>
+              </CloseArea>
+            </UpperArea>
 
             <div className="coldItem">
-              <span className="text">물품 : </span>
               <input
                 type="text"
                 onChange={(e) => handleTypeFrozen("item", e)}
+                placeholder="물품"
               />
             </div>
             <div className="coldQuantity">
-              <span className="text">양 : </span>
-              <input
+              <Input
                 type="text"
                 onChange={(e) => handleTypeFrozen("quantity", e)}
+                placeholder="양"
+                error={error}
               />
               <select
                 className="frozenUnitSelect"
@@ -181,8 +210,16 @@ function AddArea({
                 <option value="l">l</option>
               </select>
             </div>
-            <button onClick={handleAddFrozen}>추가</button>
-          </FrozenInputArea>
+            <AddButtonArea>
+              <Button
+                onClick={() => {
+                  handleAddFrozen(addFrozenItem.quantity);
+                }}
+              >
+                추가
+              </Button>
+            </AddButtonArea>
+          </InputArea>
         </AddAreaModal>
       ) : (
         <div />
@@ -193,9 +230,7 @@ function AddArea({
 
 export default AddArea;
 
-const AddAreaWrap = styled.div`
-  .
-`;
+const AddAreaWrap = styled.div``;
 
 const AddAreaModal = styled.div`
   position: fixed;
@@ -206,18 +241,34 @@ const AddAreaModal = styled.div`
   background: ${({ theme }) => theme.colors.background};
 `;
 
-const ColdInputArea = styled.div`
+const InputArea = styled.div`
   positon: relative;
   margin: 40px auto;
   width: 50vw;
-  height: 20vh;
+  height: 30vh;
   border: 1px solid;
+  background: white;
 `;
 
-const FrozenInputArea = styled.div`
-  positon: relative;
-  margin: 40px auto;
-  width: 50vw;
-  height: 20vh;
-  border: 1px solid;
+const AddHead = styled.span`
+  font-size: 1.5rem;
+`;
+
+const UpperArea = styled.div``;
+
+const Input = styled.input<{ error: boolean }>`
+  border: ${(props) => (props.error ? " 1px solid red" : " 1px solid black")};
+  color: ${(props) => (props.error ? "red" : "black")};
+`;
+
+const CloseArea = styled.div`
+  float: right;
+`;
+
+const Button = styled.button`
+  ${({ theme }) => theme.common.defaultButton}
+`;
+
+const AddButtonArea = styled.div`
+  margin-left: 20px;
 `;
