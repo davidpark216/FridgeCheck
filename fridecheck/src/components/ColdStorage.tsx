@@ -60,10 +60,12 @@ const ColdStorageWrap = styled.div`
 `;
 
 const ColdArea = styled.div`
+  margin-top: 20px;
   width: 500px;
-  height: 100px;
+  min-height: 100px;
+  height: auto;
   border: 1px solid;
   margin-bottom: 10px;
-  overflow: scroll;
+
   background: white;
 `;
