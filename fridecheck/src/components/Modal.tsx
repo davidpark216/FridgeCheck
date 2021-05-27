@@ -3,9 +3,9 @@ import styled from "styled-components";
 
 interface props {
   modalContents: string;
-  setModalContents: any;
+  setModalContents: (value: string) => void;
   isModal: boolean;
-  setIsModal: any;
+  setIsModal: (value: boolean) => void;
 }
 
 function Modal({
@@ -16,6 +16,7 @@ function Modal({
 }: props) {
   const handlecloseModal = () => {
     setIsModal(false);
+    setModalContents("");
   };
   return isModal ? (
     <ModalArea>
