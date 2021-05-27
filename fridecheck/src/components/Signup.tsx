@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
+import { isPasswordCorrect, isPasswordCheck } from "../asset/Validation";
 
 interface props {
   signupPage: boolean;
@@ -10,9 +11,26 @@ function Signup({ signupPage, setSignupPage }: props) {
     setSignupPage(false);
   };
 
-  const handleConfirm = () => {
-    setSignupPage(false);
+  const [signupInfo, setSignupInfo] = useState({
+    userName: "",
+    password: "",
+    passwordCheck: "",
+  });
+
+  const handleInput = (key: string, e: React.ChangeEvent<HTMLInputElement>) => {
+    const { value } = e.target;
+    setSignupInfo({ ...signupInfo, [key]: value });
   };
+
+  const handleConfirm = () => {
+    if (
+      isPasswordCorrect(signupInfo.password) &&
+      isPasswordCheck(signupInfo.password, signupInfo.passwordCheck)
+    ) {
+      setSignupPage(false);
+    }
+  };
+
   return signupPage ? (
     <SignupModal>
       <SignupWrap>
@@ -25,21 +43,41 @@ function Signup({ signupPage, setSignupPage }: props) {
             x
           </Button>
         </CloseArea>
-        <h3 id="signupHead">회원가입</h3>
-        <InputBox>
-          <div className="inputId">
-            <input type="text" placeholder="아이디" />
-          </div>
-          <div className="inputPassword">
-            <input type="password" placeholder="비밀번호" />
-          </div>
-          <div className="inputPasswordCheck">
-            <input type="password" placeholder="비밀번호 확인" />
-          </div>
-        </InputBox>
-        <ConfirmArea>
-          <Button onClick={() => handleConfirm()}>회원가입</Button>
-        </ConfirmArea>
+        <SignupContent>
+          <h3 id="signupHead">회원가입</h3>
+          <InputBox>
+            <div className="inputId">
+              <Input
+                type="text"
+                placeholder="아이디"
+                onChange={(e) => {
+                  handleInput("userName", e);
+                }}
+              />
+            </div>
+            <div className="inputPassword">
+              <Input
+                type="password"
+                placeholder="비밀번호"
+                onChange={(e) => {
+                  handleInput("password", e);
+                }}
+              />
+            </div>
+            <div className="inputPasswordCheck">
+              <Input
+                type="password"
+                placeholder="비밀번호 확인"
+                onChange={(e) => {
+                  handleInput("passwordCheck", e);
+                }}
+              />
+            </div>
+          </InputBox>
+          <ConfirmArea>
+            <Button onClick={() => handleConfirm()}>회원가입</Button>
+          </ConfirmArea>
+        </SignupContent>
       </SignupWrap>
     </SignupModal>
   ) : (
@@ -64,6 +102,7 @@ const SignupWrap = styled.div`
   width: 30vw;
   height: 40vh;
   background: white;
+  text-align: center;
 `;
 
 const CloseArea = styled.div`
@@ -77,3 +116,11 @@ const Button = styled.button`
 const InputBox = styled.div``;
 
 const ConfirmArea = styled.div``;
+
+const SignupContent = styled.div`
+  padding-top: 20px;
+`;
+
+const Input = styled.input`
+  margin-bottom: 20px;
+`;
