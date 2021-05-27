@@ -115,54 +115,54 @@ function AddArea({
       {addCold ? (
         <AddAreaModal>
           <InputArea>
-            <UpperArea>
-              <CloseArea>
-                <Button
-                  className="close"
-                  onClick={() => {
-                    setAddCold(false);
-                  }}
-                >
-                  x
-                </Button>
-              </CloseArea>
-
-              <AddHead>냉장칸 추가 물품</AddHead>
-            </UpperArea>
-            <div id="coldItemInput">
-              <input
-                type="text"
-                onChange={(e) => handleTypeCold("item", e)}
-                placeholder="물품"
-              />
-            </div>
-            <div className="coldQuantity">
-              <Input
-                type="text"
-                onChange={(e) => handleTypeCold("quantity", e)}
-                error={error}
-                placeholder="양"
-              />
-              <select
-                className="coldUnitSelect"
-                onChange={(e) => handleColdSelect(e)}
-              >
-                <option value=""></option>
-                <option value="g">g</option>
-                <option value="개">개</option>
-                <option value="마리">마리</option>
-                <option value="l">l</option>
-              </select>
-            </div>
-            <AddButtonArea>
+            <CloseArea>
               <Button
+                className="close"
                 onClick={() => {
-                  handleAddCold(addColdItem.quantity);
+                  setAddCold(false);
                 }}
               >
-                추가
+                x
               </Button>
-            </AddButtonArea>
+            </CloseArea>
+            <AddContent>
+              <AddHead>냉장칸 추가 물품</AddHead>
+
+              <div id="coldItemInput">
+                <input
+                  type="text"
+                  onChange={(e) => handleTypeCold("item", e)}
+                  placeholder="물품"
+                />
+              </div>
+              <div className="coldQuantity">
+                <Input
+                  type="text"
+                  onChange={(e) => handleTypeCold("quantity", e)}
+                  error={error}
+                  placeholder="양"
+                />
+                <select
+                  className="coldUnitSelect"
+                  onChange={(e) => handleColdSelect(e)}
+                >
+                  <option value=""></option>
+                  <option value="g">g</option>
+                  <option value="개">개</option>
+                  <option value="마리">마리</option>
+                  <option value="l">l</option>
+                </select>
+              </div>
+              <AddButtonArea>
+                <Button
+                  onClick={() => {
+                    handleAddCold(addColdItem.quantity);
+                  }}
+                >
+                  추가
+                </Button>
+              </AddButtonArea>
+            </AddContent>
           </InputArea>
         </AddAreaModal>
       ) : (
@@ -172,7 +172,6 @@ function AddArea({
         <AddAreaModal>
           <InputArea>
             <UpperArea>
-              <AddHead>냉동칸 추가 물품</AddHead>
               <CloseArea>
                 <Button
                   className="close"
@@ -184,41 +183,43 @@ function AddArea({
                 </Button>
               </CloseArea>
             </UpperArea>
-
-            <div className="coldItem">
-              <input
-                type="text"
-                onChange={(e) => handleTypeFrozen("item", e)}
-                placeholder="물품"
-              />
-            </div>
-            <div className="coldQuantity">
-              <Input
-                type="text"
-                onChange={(e) => handleTypeFrozen("quantity", e)}
-                placeholder="양"
-                error={error}
-              />
-              <select
-                className="frozenUnitSelect"
-                onChange={(e) => handleFrozenSelect(e)}
-              >
-                <option value=""></option>
-                <option value="g">g</option>
-                <option value="개">개</option>
-                <option value="마리">마리</option>
-                <option value="l">l</option>
-              </select>
-            </div>
-            <AddButtonArea>
-              <Button
-                onClick={() => {
-                  handleAddFrozen(addFrozenItem.quantity);
-                }}
-              >
-                추가
-              </Button>
-            </AddButtonArea>
+            <AddContent>
+              <AddHead>냉동칸 추가 물품</AddHead>
+              <div className="coldItem">
+                <input
+                  type="text"
+                  onChange={(e) => handleTypeFrozen("item", e)}
+                  placeholder="물품"
+                />
+              </div>
+              <div className="coldQuantity">
+                <Input
+                  type="text"
+                  onChange={(e) => handleTypeFrozen("quantity", e)}
+                  placeholder="양"
+                  error={error}
+                />
+                <select
+                  className="frozenUnitSelect"
+                  onChange={(e) => handleFrozenSelect(e)}
+                >
+                  <option value=""></option>
+                  <option value="g">g</option>
+                  <option value="개">개</option>
+                  <option value="마리">마리</option>
+                  <option value="l">l</option>
+                </select>
+              </div>
+              <AddButtonArea>
+                <Button
+                  onClick={() => {
+                    handleAddFrozen(addFrozenItem.quantity);
+                  }}
+                >
+                  추가
+                </Button>
+              </AddButtonArea>
+            </AddContent>
           </InputArea>
         </AddAreaModal>
       ) : (
@@ -230,7 +231,11 @@ function AddArea({
 
 export default AddArea;
 
-const AddAreaWrap = styled.div``;
+const AddAreaWrap = styled.div`
+  #test {
+    text-align: center;
+  }
+`;
 
 const AddAreaModal = styled.div`
   position: fixed;
@@ -246,8 +251,17 @@ const InputArea = styled.div`
   margin: 40px auto;
   width: 50vw;
   height: 30vh;
+  @media ${({ theme }) => theme.device.mobileL} {
+    width: 700px;
+    height: 50vh;
+  }
+
   border: 1px solid;
   background: white;
+`;
+
+const AddContent = styled.div`
+  padding-top: 20px;
 `;
 
 const AddHead = styled.span`

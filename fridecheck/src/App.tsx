@@ -9,7 +9,7 @@ import {
   AddArea,
   Modal,
 } from "./components";
-import theme from "./asset";
+import theme from "./asset/theme";
 
 function App() {
   const [loginPage, setLoginPage] = useState<boolean>(false);
@@ -87,8 +87,8 @@ function App() {
   };
 
   return (
-    <Wrap>
-      <ThemeProvider theme={theme}>
+    <ThemeProvider theme={theme}>
+      <Wrap>
         <div id="head">냉장고에 뭐있지?</div>
         <Nav
           isLogin={isLogin}
@@ -131,16 +131,19 @@ function App() {
           modalContents={modalContents}
           setModalContents={setModalContents}
         />
-      </ThemeProvider>
-    </Wrap>
+      </Wrap>
+    </ThemeProvider>
   );
 }
 
 export default App;
 
 const Wrap = styled.div`
+  @media ${({ theme }) => theme.device.mobileL} {
+    width: 700px;
+  }
   #head {
-    font-size: 50px;
+    font-size: ${({ theme }) => theme.fontSizes.titleSize};
     margin-left: 50px;
   }
 `;
@@ -151,5 +154,5 @@ const Fridge = styled.div`
   width: 700px;
   height: auto;
   text-align: -webkit-center;
-  margin-left: 20%;
+  margin: 0 auto;
 `;
