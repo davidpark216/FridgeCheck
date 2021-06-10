@@ -128,14 +128,14 @@ function AddArea({
             <AddContent>
               <AddHead>냉장칸 추가 물품</AddHead>
 
-              <div id="coldItemInput">
+              <div id="itemInput">
                 <input
                   type="text"
                   onChange={(e) => handleTypeCold("item", e)}
                   placeholder="물품"
                 />
               </div>
-              <div className="coldQuantity">
+              <div id="quantityInput">
                 <Input
                   type="text"
                   onChange={(e) => handleTypeCold("quantity", e)}
@@ -185,14 +185,14 @@ function AddArea({
             </UpperArea>
             <AddContent>
               <AddHead>냉동칸 추가 물품</AddHead>
-              <div className="coldItem">
+              <div id="itemInput">
                 <input
                   type="text"
                   onChange={(e) => handleTypeFrozen("item", e)}
                   placeholder="물품"
                 />
               </div>
-              <div className="coldQuantity">
+              <div id="quantityInput">
                 <Input
                   type="text"
                   onChange={(e) => handleTypeFrozen("quantity", e)}
@@ -252,7 +252,7 @@ const InputArea = styled.div`
   width: 50vw;
   height: 30vh;
   @media ${({ theme }) => theme.device.mobileL} {
-    width: 700px;
+    width: 500px;
     height: 50vh;
   }
 
@@ -262,6 +262,16 @@ const InputArea = styled.div`
 
 const AddContent = styled.div`
   padding-top: 20px;
+  padding-left: 19vw;
+  @media ${({ theme }) => theme.device.mobileL} {
+    padding-top: 60px;
+    padding-left: 35%;
+  }
+
+  #itemInput,
+  #quantityInput {
+    margin-bottom: 10px;
+  }
 `;
 
 const AddHead = styled.span`
